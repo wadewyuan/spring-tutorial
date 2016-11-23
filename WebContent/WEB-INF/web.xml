@@ -2,9 +2,15 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
   <display-name>spring-tutorial</display-name>
   <context-param>
+    <!--
+      param "contextConfigLocation" loaded in org.springframework.web.context.ContextLoader
+      and the value is used in org.springframework.web.context.support.XmlWebApplicationContext
+      if it's not configured, a default location is defined in XmlWebApplicationContext
+    -->
     <param-name>contextConfigLocation</param-name>
     <param-value>classpath*:main/resources/applicationContext.xml</param-value>
   </context-param>
+  <!-- listen the "contextInitialized" event -->
   <listener>
     <display-name>contextLoaderListener</display-name>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
