@@ -3,12 +3,19 @@
     namespace and xml schema instance is required for Spring to read the <beans></beans> node
     Bean factory is initialized in AbstractRefreshableApplicationContext.refresh()
 -->
-<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="
        http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans.xsd ">
-    <!-- Some beans are registered by default: loadTimeWeaver, environment, systemProperties, systemEnvironment. See org.springframework.context.support.AbstractApplicationContext -->
+       http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 
+    <!--Annotation driven is not enabled by default, uncomment below to explicitly enable -->
+    <context:annotation-config/>
+
+    <!-- Some beans are registered by default: loadTimeWeaver, environment, systemProperties, systemEnvironment. See org.springframework.context.support.AbstractApplicationContext -->
     <bean id="testBean" class="com.wadeyuan.tutorial.beans.TestBean" />
     <bean id="springUtil" class="com.wadeyuan.tutorial.util.SpringContextUtil" />
 
@@ -34,5 +41,18 @@
     <bean id="textEditor" class="com.wadeyuan.tutorial.beans.TextEditor">
         <!-- Setter dependency -->
         <property name="spellChecker" ref="spellChecker"/>
+        <!-- dependency defined in XML overrides autowired dependency -->
+        <!--<property name="configuration" ref="extConfiguration" />-->
+    </bean>
+    <!--
+    Annotation "@Autowired" expects at least one bean defined by the property type
+        - If there's only one bean with property type, bean's ID can be any value
+        - If there're multiple beans defined with same type, it looks for the bean ID which is same with property name
+          and if none of those beans' ids is same with property name, it will throw exception-->
+    <bean id="configuration" class="com.wadeyuan.tutorial.beans.Configuration">
+        <property name="spellingCheckEnabled" value="false"/>
+    </bean>
+    <bean id="extConfiguration" class="com.wadeyuan.tutorial.beans.Configuration">
+        <property name="spellingCheckEnabled" value="true"/>
     </bean>
 </beans>
