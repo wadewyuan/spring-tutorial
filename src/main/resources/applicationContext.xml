@@ -13,12 +13,17 @@
     <bean id="springUtil" class="com.wadeyuan.tutorial.util.SpringContextUtil" />
 
     <!-- Dependency Injection Sample -->
-    <bean id="spellChecker" class="com.wadeyuan.tutorial.beans.SpellChecker" />
     <!--
         Property is set after the bean is instantiated, see AbstractAutowireCapableBeanFactory.populateBean(), property values are applied in the end.
-        Of course we need provide an accessible writer of the property to Spring, usually a public setter
+        Of course we need provide an accessible writer of the property to Spring, a public setter for the property
     -->
+    <bean id="spellChecker" class="com.wadeyuan.tutorial.beans.SpellChecker">
+        <property name="locale" value="en_US" />
+    </bean>
     <bean id="textEditor" class="com.wadeyuan.tutorial.beans.TextEditor">
+        <!--
+            - Spring supports nested property name, refer to AbstractNestablePropertyAccessor.getPropertyAccessorForPropertyPath()
+         -->
         <property name="spellChecker" ref="spellChecker" />
     </bean>
 </beans>

@@ -19,4 +19,11 @@ public class TextEditor {
     public void input(String input) {
         spellChecker.checkSpelling(input);
     }
+
+    @Override
+    public String toString() {
+        return "TextEditor{" +
+                "spellChecker=" + spellChecker +
+                '}';
+    }
 }
