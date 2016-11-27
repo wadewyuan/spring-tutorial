@@ -55,4 +55,10 @@
     <bean id="extConfiguration" class="com.wadeyuan.tutorial.beans.Configuration">
         <property name="spellingCheckEnabled" value="true"/>
     </bean>
+
+    <!--Events samples-->
+    <bean id="contextStartEventHandler" class="com.wadeyuan.tutorial.events.MyContextStartEventHandler" />
+    <bean id="contextStopEventHandler" class="com.wadeyuan.tutorial.events.MyContextStopEventHandler" />
+    <bean id="contextRefreshEventHandler" class="com.wadeyuan.tutorial.events.MyContextRefreshEventHandler" />
+
 </beans>
