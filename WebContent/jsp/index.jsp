@@ -13,6 +13,7 @@
     <title>Welcome</title>
 </head>
 <body>
+    <strong>Something is running in background...</strong>
     <%
         SpringContextUtil.getBean("testBean");
 

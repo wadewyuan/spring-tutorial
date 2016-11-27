@@ -16,14 +16,23 @@
     <!--
         Property is set after the bean is instantiated, see AbstractAutowireCapableBeanFactory.populateBean(), property values are applied in the end.
         Of course we need provide an accessible writer of the property to Spring, a public setter for the property
+        Notes:
+            - Spring supports nested property name, refer to AbstractNestablePropertyAccessor.getPropertyAccessorForPropertyPath()
+            - It is a good rule of thumb to use constructor arguments for mandatory dependencies and setters for optional dependencies
     -->
     <bean id="spellChecker" class="com.wadeyuan.tutorial.beans.SpellChecker">
-        <property name="locale" value="en_US" />
+        <!-- Constructor dependency:  -->
+        <constructor-arg name="locale" value="en_US" />
+        <!-- Inject a collection -->
+        <property name="dictionaries">
+            <list>
+                <value>file://C:/Users/Admin/1.dic</value>
+                <value>file://C:/Users/Admin/2.dic</value>
+            </list>
+        </property>
     </bean>
     <bean id="textEditor" class="com.wadeyuan.tutorial.beans.TextEditor">
-        <!--
-            - Spring supports nested property name, refer to AbstractNestablePropertyAccessor.getPropertyAccessorForPropertyPath()
-         -->
-        <property name="spellChecker" ref="spellChecker" />
+        <!-- Setter dependency -->
+        <property name="spellChecker" ref="spellChecker"/>
     </bean>
 </beans>

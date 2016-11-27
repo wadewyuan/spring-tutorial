@@ -8,7 +8,7 @@ public class TextEditor {
     private SpellChecker spellChecker;
 
     public TextEditor() {
-        System.out.println("Initializing: " + TextEditor.class.getName());
+        System.out.println("Initializing: " + this.toString());
     }
 
     public void setSpellChecker(SpellChecker spellChecker) {
