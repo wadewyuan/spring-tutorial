@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     namespace and xml schema instance is required for Spring to read the <beans></beans> node
-    Bean factory is initialized in loadBeanDefinitions in AbstractRefreshableApplicationContext.refresh()
+    Bean factory is initialized in AbstractRefreshableApplicationContext.refresh()
 -->
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="
