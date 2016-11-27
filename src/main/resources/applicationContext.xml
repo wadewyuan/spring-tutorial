@@ -11,4 +11,10 @@
 
     <bean id="testBean" class="com.wadeyuan.tutorial.beans.TestBean" />
     <bean id="springUtil" class="com.wadeyuan.tutorial.util.SpringContextUtil" />
+
+    <!-- Dependency Injection Sample -->
+    <bean id="spellChecker" class="com.wadeyuan.tutorial.beans.SpellChecker" />
+    <bean id="textEditor" class="com.wadeyuan.tutorial.beans.TextEditor">
+        <property name="spellChecker" ref="spellChecker" />
+    </bean>
 </beans>
