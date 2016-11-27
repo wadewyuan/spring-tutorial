@@ -8,6 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class TextEditor {
 
     private SpellChecker spellChecker;
+
+    /**
+     * Autowire will not call the setter method to inject dependency.
+     * Value is injected in AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues()
+     * 1. Find fields to be autowired
+     * 2. For each fields, resolve the value from bean factory
+     * 3. Make private filed accessible and set value using java reflection
+     * 4. This is before applyPropertyValues so it will be overridden by XML configuration
+     */
     @Autowired
     private Configuration configuration;
 
@@ -21,7 +30,7 @@ public class TextEditor {
     }
 
     /**
-     * Autowire will not call the setter method to inject dependency, TODO: Review & debug the code
+     * Autowire will not call the setter method to inject dependency.
      * @param configuration
      */
     public void setConfiguration(Configuration configuration) {
