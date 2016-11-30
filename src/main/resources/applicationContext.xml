@@ -57,6 +57,8 @@
     </bean>
 
     <!--Events samples-->
+    <!--Event handlers need to implement the ApplicationListener interface. Beans with ApplicationListener type will be registered to ApplicationContext
+    Details see AbstractApplicationContext.refresh(), registerListeners() is invoked-->
     <bean id="contextStartEventHandler" class="com.wadeyuan.tutorial.events.handler.MyContextStartEventHandler" />
     <bean id="contextStopEventHandler" class="com.wadeyuan.tutorial.events.handler.MyContextStopEventHandler" />
     <bean id="contextRefreshEventHandler" class="com.wadeyuan.tutorial.events.handler.MyContextRefreshEventHandler" />
