@@ -21,5 +21,8 @@
         TextEditor textEditor = (TextEditor) SpringContextUtil.getBean("textEditor");
         textEditor.input("Hello");
     %>
+    <ul>
+        <li><a href="jsp/custom-event.jsp">Event</a></li>
+    </ul>
 </body>
 </html>

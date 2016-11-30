@@ -57,8 +57,11 @@
     </bean>
 
     <!--Events samples-->
-    <bean id="contextStartEventHandler" class="com.wadeyuan.tutorial.events.MyContextStartEventHandler" />
-    <bean id="contextStopEventHandler" class="com.wadeyuan.tutorial.events.MyContextStopEventHandler" />
-    <bean id="contextRefreshEventHandler" class="com.wadeyuan.tutorial.events.MyContextRefreshEventHandler" />
+    <bean id="contextStartEventHandler" class="com.wadeyuan.tutorial.events.handler.MyContextStartEventHandler" />
+    <bean id="contextStopEventHandler" class="com.wadeyuan.tutorial.events.handler.MyContextStopEventHandler" />
+    <bean id="contextRefreshEventHandler" class="com.wadeyuan.tutorial.events.handler.MyContextRefreshEventHandler" />
+    <!--Custom events-->
+    <bean id="customEventPublisher" class="com.wadeyuan.tutorial.events.publisher.MyCustomEventPublisher" />
+    <bean id="customEventHandler" class="com.wadeyuan.tutorial.events.handler.MyCustomEventHandler" />
 
 </beans>
