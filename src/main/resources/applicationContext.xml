@@ -69,4 +69,16 @@
     <bean id="customEventPublisher" class="com.wadeyuan.tutorial.events.publisher.MyCustomEventPublisher" />
     <bean id="customEventHandler" class="com.wadeyuan.tutorial.events.handler.MyCustomEventHandler" />
 
+    <!--AOP samples-->
+    <bean id="taskProcessor" class="com.wadeyuan.tutorial.beans.TaskProcessor" />
+    <bean id="taskProcessorAspect" class="com.wadeyuan.tutorial.aspect.TaskProcessorAspect" />
+    <aop:config>
+        <aop:aspect ref="taskProcessorAspect">
+            <aop:pointcut id="processTask" expression="execution(* com.wadeyuan.tutorial.beans.TaskProcessor.process(..))" />
+            <aop:before pointcut-ref="processTask" method="beforeProcess" />
+            <aop:after pointcut-ref="processTask" method="afterProcess" />
+            <aop:around pointcut-ref="processTask" method="aroundProcess" />
+        </aop:aspect>
+    </aop:config>
+
 </beans>
