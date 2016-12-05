@@ -73,6 +73,7 @@
     <bean id="taskProcessor" class="com.wadeyuan.tutorial.beans.TaskProcessor" />
     <bean id="taskProcessorAspect" class="com.wadeyuan.tutorial.aspect.TaskProcessorAspect" />
     <aop:config>
+        <!--BeanPostProcessor AspectJAwareAdvisorAutoProxyCreator is registered by bean factory-->
         <aop:aspect ref="taskProcessorAspect">
             <aop:pointcut id="processTask" expression="execution(* com.wadeyuan.tutorial.beans.TaskProcessor.process(..))" />
             <aop:before pointcut-ref="processTask" method="beforeProcess" />
