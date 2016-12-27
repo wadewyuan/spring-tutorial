@@ -1,17 +1,19 @@
-package com.wadeyuan.tutorial.beans.processor.impl;
+package com.wadeyuan.tutorial.beans.processor.proxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 
 /**
  * Created by wadey on 12/27/2016.
  */
-public class GammaProcessorProxy implements InvocationHandler {
+public class ProcessorProxy implements InvocationHandler {
 
     private Object target;
 
-    public void setTarget(Object target) {
+    public Object bind(Object target) {
         this.target = target;
+        return Proxy.newProxyInstance(target.getClass().getClassLoader(), target.getClass().getInterfaces(), this);
     }
 
     @Override

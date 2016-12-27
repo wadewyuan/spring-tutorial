@@ -1,7 +1,6 @@
 <%@ page import="com.wadeyuan.tutorial.beans.processor.GammaProcessor" %>
 <%@ page import="com.wadeyuan.tutorial.beans.processor.impl.GammaProcessorImpl" %>
-<%@ page import="com.wadeyuan.tutorial.beans.processor.impl.GammaProcessorProxy" %>
-<%@ page import="java.lang.reflect.Proxy" %>
+<%@ page import="com.wadeyuan.tutorial.beans.processor.proxy.ProcessorProxy" %>
 <%--
   Created by IntelliJ IDEA.
   User: wadey
@@ -16,9 +15,8 @@
 </head>
 <body>
     <%
-        GammaProcessorProxy proxy = new GammaProcessorProxy();
-        proxy.setTarget(new GammaProcessorImpl());
-        GammaProcessor processorProxy = (GammaProcessor) Proxy.newProxyInstance(GammaProcessorProxy.class.getClassLoader(), GammaProcessorImpl.class.getInterfaces(), proxy);
+        ProcessorProxy proxy = new ProcessorProxy();
+        GammaProcessor processorProxy = (GammaProcessor) proxy.bind(new GammaProcessorImpl());
         processorProxy.processGamma();
         System.out.println(processorProxy.getClass().toString());
         for(Class cls : processorProxy.getClass().getInterfaces()) {
