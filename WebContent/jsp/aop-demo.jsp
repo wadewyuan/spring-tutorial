@@ -1,5 +1,7 @@
-<%@ page import="com.wadeyuan.tutorial.beans.TaskProcessor" %>
-<%@ page import="com.wadeyuan.tutorial.util.SpringContextUtil" %><%--
+<%@ page import="com.wadeyuan.tutorial.beans.processor.AlphaProcessor" %>
+<%@ page import="com.wadeyuan.tutorial.util.SpringContextUtil" %>
+<%@ page import="com.wadeyuan.tutorial.beans.processor.BetaProcessor" %>
+<%--
   Created by IntelliJ IDEA.
   User: wadey
   Date: 12/5/2016
@@ -13,8 +15,10 @@
 </head>
 <body>
     <%
-        TaskProcessor taskProcessor = (TaskProcessor) SpringContextUtil.getBean("taskProcessor");
-        taskProcessor.process();
+        AlphaProcessor alphaProcessor = (AlphaProcessor) SpringContextUtil.getBean("alphaProcessor");
+        BetaProcessor betaProcessor = (BetaProcessor) SpringContextUtil.getBean("betaProcessor");
+        alphaProcessor.processAlpha();
+        betaProcessor.processBeta();
     %>
     Task processed, check your console for AOP info
 </body>

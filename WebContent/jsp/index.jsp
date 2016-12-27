@@ -20,6 +20,7 @@
         <li><a href="jsp/dependency-injection.jsp">DI</a></li>
         <li><a href="jsp/custom-event.jsp">Event</a></li>
         <li><a href="jsp/aop-demo.jsp">AOP</a></li>
+        <li><a href="jsp/dynamic-proxy.jsp">Dynamic Proxy</a></li>
     </ul>
 </body>
 </html>

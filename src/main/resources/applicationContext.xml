@@ -70,12 +70,13 @@
     <bean id="customEventHandler" class="com.wadeyuan.tutorial.events.handler.MyCustomEventHandler" />
 
     <!--AOP samples-->
-    <bean id="taskProcessor" class="com.wadeyuan.tutorial.beans.TaskProcessor" />
+    <bean id="alphaProcessor" class="com.wadeyuan.tutorial.beans.processor.impl.AlphaProcessorImpl" />
+    <bean id="betaProcessor" class="com.wadeyuan.tutorial.beans.processor.impl.BetaProcessorImpl" />
     <bean id="taskProcessorAspect" class="com.wadeyuan.tutorial.aspect.TaskProcessorAspect" />
     <aop:config>
         <!--BeanPostProcessor AspectJAwareAdvisorAutoProxyCreator is registered by bean factory-->
         <aop:aspect ref="taskProcessorAspect">
-            <aop:pointcut id="processTask" expression="execution(* com.wadeyuan.tutorial.beans.TaskProcessor.process(..))" />
+            <aop:pointcut id="processTask" expression="execution(* com.wadeyuan.tutorial.beans.processor.*.process*(..))" />
             <aop:before pointcut-ref="processTask" method="beforeProcess" />
             <aop:after pointcut-ref="processTask" method="afterProcess" />
             <aop:around pointcut-ref="processTask" method="aroundProcess" />
