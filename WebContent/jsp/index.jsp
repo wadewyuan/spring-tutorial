@@ -7,7 +7,6 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="com.wadeyuan.tutorial.util.SpringContextUtil" %>
-<%@ page import="com.wadeyuan.tutorial.beans.TextEditor" %>
 <html>
 <head>
     <title>Welcome</title>
@@ -16,13 +15,12 @@
     <strong>Something is running in background...</strong>
     <%
         SpringContextUtil.getBean("testBean");
-
-        // Dependency injection demo, monitor console output
-        TextEditor textEditor = (TextEditor) SpringContextUtil.getBean("textEditor");
-        textEditor.input("Hello");
     %>
     <ul>
+        <li><a href="jsp/dependency-injection.jsp">DI</a></li>
         <li><a href="jsp/custom-event.jsp">Event</a></li>
+        <li><a href="jsp/aop-demo.jsp">AOP</a></li>
+        <li><a href="jsp/dynamic-proxy.jsp">Dynamic Proxy</a></li>
     </ul>
 </body>
 </html>
