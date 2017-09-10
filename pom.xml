@@ -9,7 +9,12 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>war</packaging>
     <build>
-        <sourceDirectory>src</sourceDirectory>
+        <sourceDirectory>src/java</sourceDirectory>
+        <resources>
+            <resource>
+                <directory>src/main</directory>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
